@@ -1,0 +1,10 @@
+---
+ - name: access test
+   host: rhel8-1
+   become: yes
+
+   tasks:
+    - name: execute command hostname 
+      ansible.builtin.command: hostname -A
+
+ 
