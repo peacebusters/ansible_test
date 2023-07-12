@@ -1,0 +1,12 @@
+---
+ - name: OS patch update
+   hosts: rhel
+   become: yes
+
+   tasks:
+   - name: update
+     ansible.builtin.package:
+       name: *
+       state: latest
+
+  
