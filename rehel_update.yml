@@ -1,6 +1,6 @@
 ---
  - name: OS patch update
-   hosts: rhel
+   hosts: rhel8-1
    become: yes
 
    tasks:
