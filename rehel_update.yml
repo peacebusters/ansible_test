@@ -4,9 +4,11 @@
    become: yes
 
    tasks:
-   - name: all package update
+   - name: httpd package install
      ansible.builtin.package:
-       name: *
+       name: httpd
        state: latest
+  
+      
 
   
