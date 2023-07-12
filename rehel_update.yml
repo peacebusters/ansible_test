@@ -4,9 +4,10 @@
    become: yes
 
    tasks:
-   - name: update
+   - name: all package update
      ansible.builtin.package:
-       name: *
+       name: 
+        - *
        state: latest
 
   
