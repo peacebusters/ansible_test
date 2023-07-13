@@ -1,0 +1,14 @@
+---
+ - name: get_log
+   hosts: all
+   become: yes
+   var:
+     logfile: /var/log/messages
+
+   tasks:
+    - name: get log 
+      ansible.builtin.shell:  tail -n 20 {{ logfile }}
+      register: log_result
+    - name: shlw log
+      ansible.builtin.debug:
+        var: log_result.stdout_lines
