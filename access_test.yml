@@ -5,10 +5,9 @@
 
    tasks:
     - name: execute command hostname 
-      ansible.builtin.command: hostname -A
-      register: command_output
+      ansible.builtin.shell: /user/bin/hostname -A
+      register: result
     - name: show output
       ansible.builtin.debug:
-        var: commnad_output
-        msg: "{{ command_output.stdout }}"
+        var: result
         verbosity: 2
