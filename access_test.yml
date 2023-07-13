@@ -8,5 +8,6 @@
       ansible.builtin.command: hostname -A
       register: command_output
     - name: show output
-      debug:
-      msg: {{ command_output.stdout }}
+      ansible.builtin.debug:
+        var: commnad_output
+        verbosity: 2
