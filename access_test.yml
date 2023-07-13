@@ -7,8 +7,8 @@
     - name: execute command hostname 
       ansible.builtin.command: hostname -A
       register: command_output
-    -debug:
-      var: command_out.stdout_line
+
+    - debug: var = command_out
 
 
 
