@@ -7,7 +7,13 @@
      service_state: started 
 
    tasks:
+     - name: service install
+       ansible.builtin.package:
+         name: 
+           - httpd
+         state: latest
+    
      - name: Start service httpd, if not started
        service:
          name: '{{ service_name }}'
-         state: '{{ started }}'
+         state: '{{ service_state }}'
