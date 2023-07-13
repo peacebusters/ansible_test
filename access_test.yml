@@ -10,4 +10,10 @@
     - name: show output
       ansible.builtin.debug:
         var: result
-        verbosity: 2
+
+    - name: get log 
+      ansible.builtin.shell:  tail -f -n 20 /var/log/messages
+      register: log_result
+    - name: show output
+      ansible.builtin.debug:
+        var: log_result
