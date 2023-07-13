@@ -5,7 +5,7 @@
 
    tasks:
     - name: execute command hostname 
-      ansible.builtin.shell: /user/bin/hostname -A
+      ansible.builtin.shell: hostname -A
       register: result
     - name: show output
       ansible.builtin.debug:
