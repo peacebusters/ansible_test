@@ -12,7 +12,7 @@
         var: result
 
     - name: get log 
-      ansible.builtin.shell:  tail -f -n 20 /var/log/messages
+      ansible.builtin.shell:  tail -n 20 /var/log/messages
       register: log_result
     - name: shlw log
       ansible.builtin.debug:
