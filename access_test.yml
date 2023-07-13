@@ -9,11 +9,11 @@
       register: result
     - name: show output
       ansible.builtin.debug:
-        var: result
+        var: result.stdout
 
     - name: get log 
       ansible.builtin.shell:  tail -n 20 /var/log/messages
       register: log_result
     - name: shlw log
       ansible.builtin.debug:
-        var: log_result
+        var: log_result.stdout_lines
