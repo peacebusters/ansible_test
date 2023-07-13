@@ -1,15 +1,17 @@
 ---
  - name: get_log
-#   hosts: all
+   hosts: all
    become: yes
    vars:
      logfile: /var/log/messages
      lines: 20
+     host_name: 
 
    tasks:
     - name: get log 
       ansible.builtin.shell:  tail -n {{ lines }} {{ logfile }}
       register: log_result
+      when: inventory_hostname == {{ host_name }}
     - name: shlw log
       ansible.builtin.debug:
         var: log_result.stdout_lines
