@@ -11,7 +11,3 @@
     - name: show output
       debug:
       message: "{{ command_output.stdout }}"
-
-
-
- 
