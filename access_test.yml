@@ -10,5 +10,5 @@
     - name: show output
       ansible.builtin.debug:
         var: commnad_output
-        msg: {{ command_output.stdout }}
+        msg: "{{ command_output.stdout }}"
         verbosity: 2
