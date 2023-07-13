@@ -9,5 +9,5 @@
    tasks:
      - name: Start service httpd, if not started
        service:
-         name: {{ service_name }}
-         state: {{ started }}
+         name: '{{ service_name }}'
+         state: '{{ started }}'
