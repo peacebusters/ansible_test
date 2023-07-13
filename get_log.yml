@@ -5,7 +5,7 @@
    vars:
      logfile: /var/log/messages
      lines: 20
-     host_name: 
+     host_name: rhel8-1
 
    tasks:
     - name: get log 
