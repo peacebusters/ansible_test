@@ -5,13 +5,12 @@
    vars:
      logfile: /var/log/messages
      lines: 20
-     host_name: rhel8-1
 
    tasks:
     - name: get log 
       ansible.builtin.shell:  tail -n {{ lines }} {{ logfile }}
       register: log_result
-      when: inventory_hostname == {{ host_name }}
+
     - name: shlw log
       ansible.builtin.debug:
         var: log_result.stdout_lines
