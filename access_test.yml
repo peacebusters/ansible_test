@@ -1,6 +1,6 @@
 ---
  - name: access test
-   hosts: rhel8-1
+   hosts: all
    become: yes
 
    tasks:
