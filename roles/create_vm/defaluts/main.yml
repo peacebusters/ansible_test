@@ -1,10 +1,10 @@
 ---
 aws_region: us-east-2
-aws_keypair_name: aws-test-key
-aws_instance_size: t2.micro
+aws_keypair_name: EDA-KEY
+aws_instance_size: t3.micro
 tenancy: default
-aws_securitygroup_name: private-network-sg
-aws_vpc_subnet_name: priv-net-private-subnet
+aws_securitygroup_name: RedHat-sg
+aws_vpc_subnet_name: AAP-subnet-public1-us-east-2a
 aws_ec2_wait: true
 aws_userdata_template: default
 # Tag Defaults
