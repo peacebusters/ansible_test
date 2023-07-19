@@ -1,0 +1,54 @@
+
+Inventory
+Source: Amazon EC2
+Source Variable :
+    regions: us-east-2
+    private: 'false'
+    hostnames:
+    - tag:Name
+    compose:
+    ansible_host: public_ip_address
+
+
+Parameter	Value
+Name	Retrieve EC2 information
+Inventory	AWS Inventory
+Project	AWS Demo Project
+Playbook	playbooks/lab2-ec2-info.yml
+Credentials	AWS_credential
+For the Credentials you will have to select Amazon Web Services from the Select Category dropdown; then the AWS_credential will show up in the list to select.
+
+Scroll to the bottom and click Save.
+
+Launch the Retrieve EC2 information job template, by selecting it and clicking on Launch, or by simply clicking the Rocket Launcher 🚀 icon.
+
+Observe the output of the Job Template run.
+
+In a highly dynamic environment, the AWS Inventory (EC2 instances) can change very often. So it's important to trigger an Inventory synchronization before we run the job template. Let's address this in Task 4.
+
+
+☑️ Task 4 - Create a Workflow Template to trigger an inventory synchronization, and run the job template.
+Click on the Automation Controller tab at the top of lab. Click on the Templates link under the Resources group on the left navigation menu.
+
+Now click the blue Add button, the select Add Workflow template.
+
+Fill out the following fields:
+
+Parameter	Value
+Name	WORKFLOW - Retrieve EC2 information
+Inventory	AWS Inventory
+Scroll to the bottom and click Save. The Workflow visual designer will open. Click on the green START button. In the Add Node dialog, expand the Node Type dropdown and select Inventory Source Sync then select the AWS Source from the list below, and now click on Save.
+
+At this point you have the first node in the workflow that will trigger the AWS Inventory synchronization. Hover over the node titled AWS Source and select the + sign to add another node to the workflow.
+
+Make sure On Success is selected. This will make sure that we don't proceed to the next node until the fist node in the workflow is complete. Select Next.
+
+At this point the Node Type should be Job Template. Select the Retrieve EC2 information job template from the list below, and now click on Save.
+
+In the top right corner of the Workflow designer click on Save to save the Workflow Template.
+
+Launch the workflow template WORKFLOW - Retrieve EC2 information. To see the job details you can select each workflow node, and go to the Output tab to see the details of that node execution.
+
+In summary, this Workflow template made sure we updated the AWS inventory to the most recent inventory, and then retrieved the EC2 information that we desired.
+
+When you are done, please move on to the next challenge. Click Next.
