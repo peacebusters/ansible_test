@@ -8,6 +8,7 @@
      aws_keypair_name: 'EDA-KEY'
      aws_vpc_subnet_name: 'AAP-subnet-public1-us-east-2a'
      aws_security_group_name: 'RedHat-SG'
+     vm_blueprint: 'rhel8'
      
    vars_file:
      - "vm_blueprints/{{ vm_blueprint }}.yml"    
