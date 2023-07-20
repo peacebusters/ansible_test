@@ -13,7 +13,7 @@
      - name: Check the taerget vm is existed
        amazon.aws.ec2_instance_info:
          filters:
-           "tag:name": '{{ vm_name }}'
+           "tag:Name": '{{ vm_name }}'
          region: '{{ aws_region }}'
        register: existing_vm
 
