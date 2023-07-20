@@ -9,29 +9,12 @@
      aws_vpc_subnet_name: 'AAP-subnet-public1-us-east-2a'
      aws_security_group_name: 'RedHat-SG'
      vm_blueprint: 'rhel8'
+     aws_instance_ami: 'ami-0091af26fbb64f3e1'
      
    vars_files:
      - 'vm_blueprints/{{ vm_blueprint }}.yml'
 
    tasks:
-    - name: vars check
-      ansible.builtin.debug:
-        var: aws_image_filter
-
-
-    - name: Find ami
-      amazon.aws.ec2_ami_info:
-        region: "{{ aws_region }}"
-        owners: "{{ aws_image_owners | default(omit) }}"
-        filters:
-          name: "{{ aws_image_filter }}"
-          architecture: "{{ aws_image_architecture | default(omit) }}"
-      register: vm_amis
-
-    - name: Save ami
-      ansible.builtin.set_fact:
-        aws_instance_ami: >
-          {{ (vm_amis.images | selectattr('name', 'defined') | sort(attribute='creation_date'))[-1].image_id }}
 
     - name: start an instance with a public IP address
       amazon.aws.ec2_instance:
