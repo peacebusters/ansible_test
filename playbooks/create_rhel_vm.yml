@@ -10,8 +10,9 @@
      aws_security_group_name: 'RedHat-SG'
      vm_blueprint: 'rhel8'
      
-   vars_file:
-     - "vm_blueprints/{{ vm_blueprint }}.yml"    
+   vars_files:
+     - "vm_blueprints/{{ vm_blueprint }}.yml"
+     
    tasks:
     - name: start an instance with a public IP address
       block:
