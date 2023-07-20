@@ -42,3 +42,8 @@
         tags:
           Environment: DEMO
           Name: '{{ vm_name }}'
+
+    - name: Wait for VM Creation
+      ansible.builtin.wait_for:
+        minutes: 3
+
