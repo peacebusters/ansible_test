@@ -1,5 +1,5 @@
 ---
-- hosts: "{{ HOSTS }}"
+- hosts: "{{ vm_name }}"
   become: yes
   vars:
     package: "{{ PACKAGE }}"

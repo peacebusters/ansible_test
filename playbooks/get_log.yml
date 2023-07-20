@@ -1,6 +1,6 @@
 ---
  - name: get_log
-   hosts: '{{ HOST }}'
+   hosts: '{{ vm_name }}'
    become: yes
    vars:
      logfile: /var/log/messages
