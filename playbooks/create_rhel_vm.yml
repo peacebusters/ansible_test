@@ -16,7 +16,8 @@
    tasks:
     - name: vars check
       ansible.builtin.debug:
-        var: aws_instance_size
+        var: aws_image_filter
+
 
     - name: Find ami
       amazon.aws.ec2_ami_info:
