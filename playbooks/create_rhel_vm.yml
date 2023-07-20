@@ -23,6 +23,7 @@
         vpc_subnet_id: '{{ aws_vpc_subnet_name }}'
         instance_type: '{{ aws_instance_size }}'
         security_group: '{{ aws_security_group_name }}'
+        region: '{{ aws_region }}'
         network:
           assign_public_ip: true
         image_id: '{{ aws_instance_ami }}'
