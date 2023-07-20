@@ -1,0 +1,36 @@
+---
+ - name: create_rhel_vm
+   hosts: localhost
+   become: yes
+   vars:
+     host_name: 'rhel-demo'
+     aws_region: 'us-east-2'
+     aws_keypair_name: 'EDA-KEY'
+     aws_vpc_subnet_name: 'AAP-subnet-public1-us-east-2a'
+     aws_security_group_name: 'RedHat-SG'
+     
+   vars_file:
+     - "vm_blueprints/{{ vm_blueprint }}.yml"    
+   tasks:
+    - name: start an instance with a public IP address
+      block:
+        - name: Get subnet info
+          amazon.aws.ec2_vpc_subnet_info:
+            region: "{{ aws_region }}"
+            filters:
+              "tag:Name": "{{ aws_vpc_subnet_name }}"
+          register: aws_subnet
+          when: aws_subnet_id is not defined
+
+
+      amazon.aws.ec2_instance:
+        name: '{{ host_name }}'
+        key_name: '{{ aws_keypair_name }}'
+        vpc_subnet_id: '{{ aws_vpc_subnet_name }}'
+        instance_type: '{{ aws_instance_size }}'
+        security_group: '{{ aws_security_group_name }}'
+        network:
+          assign_public_ip: true
+        image_id: '{{ aws_image_filter }}'
+        tags:
+          Environment: DEMO
