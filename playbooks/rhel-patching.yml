@@ -1,9 +1,11 @@
 ---
 - hosts: "{{ HOSTS }}"
   become: yes
+  vars:
+    package: "{{ pacakge }}"
 
   tasks:
     - name: 
       ansible.builtin.dnf:
-        name: *
+        name: '*'
         state: latest
