@@ -15,15 +15,15 @@
 
    tasks:
      - name: start an instance with a public IP address
-        amazon.aws.ec2_instance:
-          name: '{{ vm_name }}'
-          key_name: '{{ aws_keypair_name }}'
-          vpc_subnet_id: '{{ aws_vpc_subnet_name }}'
-          instance_type: '{{ aws_instance_size }}'
-          security_group: '{{ aws_security_group_name }}'
-          network:
-            assign_public_ip: true
-          image_id: '{{ aws_image_filter }}'
-          tags:
-            Environment: DEMO
-            Name: "{{ vm_name }}"
+       amazon.aws.ec2_instance:
+         name: '{{ vm_name }}'
+         key_name: '{{ aws_keypair_name }}'
+         vpc_subnet_id: '{{ aws_vpc_subnet_name }}'
+         instance_type: '{{ aws_instance_size }}'
+         security_group: '{{ aws_security_group_name }}'
+         network:
+         assign_public_ip: true
+         image_id: '{{ aws_image_filter }}'
+         tags:
+           Environment: DEMO
+           Name: '{{ vm_name }}'
