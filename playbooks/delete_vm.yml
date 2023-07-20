@@ -9,19 +9,19 @@
      vm_name: '{{ vm_name }}'
      aws_region: 'us-east-2'
 
-  tasks:
-    - name: Check the taerget vm is existed
-      amazon.aws.ec2_instance_info:
-        filters:
-          "tag:name": {{ vm_name }}
-        region: '{{ aws_region }}'
-      register: existing_vm
+   tasks:
+     - name: Check the taerget vm is existed
+       amazon.aws.ec2_instance_info:
+         filters:
+           "tag:name": {{ vm_name }}
+         region: '{{ aws_region }}'
+       register: existing_vm
 
-    - name: Delete vm
-      amazon.aws.ec2_instance:
-        instance_ids:
-          - "{{ existing_vm.instances[0].instance_id }}"
-        region: '{{ aws_region }}'
-        state: terminated
-      when: existing_vm.instances is defined and existing_vm.instances | length == 1
+     - name: Delete vm
+       amazon.aws.ec2_instance:
+         instance_ids:
+           - "{{ existing_vm.instances[0].instance_id }}"
+         region: '{{ aws_region }}'
+         state: terminated
+       when: existing_vm.instances is defined and existing_vm.instances | length == 1
 
