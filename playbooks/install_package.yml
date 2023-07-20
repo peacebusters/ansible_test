@@ -1,0 +1,25 @@
+---
+- hosts: "{{ HOSTS }}"
+  become: yes
+  vars:
+    package: httpd
+
+  tasks:
+    - name: Package Install
+      ansible.builtin.dnf:
+        name: '{{ package }}'
+        state: latest
+      when: ansible_facts['distribution_major_version'] == '8'
+        or ansible_facts['distribution_major_version'] == '9'
+    - name:
+      ansible.builtin.yum:
+        name: '{{ package }}'
+        state: latest
+      when: ansible_facts['distribution_major_version'] == '7'
+
+    - name: Start Service
+      ansible.builtin.services:
+        name: '{{ package }}'
+        state: started
+        enabled: yes
+
