@@ -14,6 +14,22 @@
      - "vm_blueprints/{{ vm_blueprint }}.yml"
 
    tasks:
+    - name: Find ami
+      amazon.aws.ec2_ami_info:
+        region: "{{ aws_region }}"
+        owners: "{{ aws_image_owners | default(omit) }}"
+        filters:
+          name: "{{ aws_image_filter }}"
+          architecture: "{{ aws_image_architecture | default(omit) }}"
+      register: vm_amis
+      when: aws_instance_ami is not defined
+
+    - name: Save ami
+      ansible.builtin.set_fact:
+        aws_instance_ami: >
+          {{ (vm_amis.images | selectattr('name', 'defined') | sort(attribute='creation_date'))[-1].image_id }}
+      when: aws_instance_ami is not defined
+
      - name: start an instance with a public IP address
        amazon.aws.ec2_instance:
          name: '{{ vm_name }}'
@@ -23,7 +39,7 @@
          security_group: '{{ aws_security_group_name }}'
          network:
          assign_public_ip: true
-         image_id: '{{ aws_image_filter }}'
+         image_id: '{{ aws_instance_ami }}'
          tags:
            Environment: DEMO
            Name: '{{ vm_name }}'
