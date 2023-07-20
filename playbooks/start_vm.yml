@@ -1,0 +1,27 @@
+---
+ - name: start_vm
+   hosts: localhost
+   connection: local
+   gather_facts: false
+   become: yes
+  
+   vars:
+     vm_name: 
+     aws_region: 'us-east-2'
+
+   tasks:
+     - name: Check the taerget vm is existed
+       amazon.aws.ec2_instance_info:
+         filters:
+           "tag:Name": '{{ vm_name }}'
+         region: '{{ aws_region }}'
+       register: existing_vm
+
+     - name: start vm
+       amazon.aws.ec2_instance:
+         instance_ids:
+           - "{{ existing_vm.instances[0].instance_id }}"
+         region: '{{ aws_region }}'
+         state: started
+       when: existing_vm.instances is defined and existing_vm.instances | length == 1
+
