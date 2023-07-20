@@ -5,17 +5,24 @@
     package: httpd
 
   tasks:
-    - name: Package Install
+    - name: Package Install for RHEL8/9
       ansible.builtin.dnf:
         name: '{{ package }}'
         state: latest
       when: ansible_facts['distribution_major_version'] == '8'
         or ansible_facts['distribution_major_version'] == '9'
-    - name:
+      register: result
+
+    - name: Package Install for RHEL7
       ansible.builtin.yum:
         name: '{{ package }}'
         state: latest
       when: ansible_facts['distribution_major_version'] == '7'
+      register: result
+   
+    - name: Result check for package install
+      ansible.builtin.debug:
+        var: result.stdout_lines
 
     - name: Start Service
       ansible.builtin.service:
