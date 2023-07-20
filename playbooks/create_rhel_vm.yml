@@ -45,5 +45,5 @@
 
     - name: Wait for VM Creation
       ansible.builtin.pause:
-        minutes: 3
+        minutes: 1
 
