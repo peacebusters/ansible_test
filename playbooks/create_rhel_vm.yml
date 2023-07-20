@@ -3,7 +3,7 @@
    hosts: localhost
    become: yes
    vars:
-     host_name: 'rhel-demo'
+     vm_name: 'rhel-demo'
      aws_region: 'us-east-2'
      aws_keypair_name: 'EDA-KEY'
      aws_vpc_subnet_name: 'AAP-subnet-public1-us-east-2a'
@@ -24,7 +24,7 @@
 
 
       amazon.aws.ec2_instance:
-        name: '{{ host_name }}'
+        name: '{{ vm_name }}'
         key_name: '{{ aws_keypair_name }}'
         vpc_subnet_id: '{{ aws_vpc_subnet_name }}'
         instance_type: '{{ aws_instance_size }}'
@@ -34,3 +34,4 @@
         image_id: '{{ aws_image_filter }}'
         tags:
           Environment: DEMO
+          Name: "{{ vm_name }}"
