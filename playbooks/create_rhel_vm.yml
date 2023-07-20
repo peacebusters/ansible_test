@@ -32,7 +32,7 @@
       amazon.aws.ec2_instance:
         name: '{{ vm_name }}'
         key_name: '{{ aws_keypair_name }}'
-        vpc_subnet_id: '{{ aws_vpc_subnet_name }}'
+        vpc_subnet_id: '{{ aws_subnet_id }}'
         instance_type: '{{ aws_instance_size }}'
         security_group: '{{ aws_security_group_name }}'
         region: '{{ aws_region }}'
