@@ -15,6 +15,18 @@
      - 'vm_blueprints/{{ vm_blueprint }}.yml'
 
    tasks:
+    - name: Get subnet info
+      amazon.aws.ec2_vpc_subnet_info:
+        region: "{{ aws_region }}"
+        filters:
+          "tag:Name": "{{ aws_vpc_subnet_name }}"
+      register: aws_subnet
+      when: aws_subnet_id is not defined
+
+    - name: Save subnet id
+      ansible.builtin.set_fact:
+        aws_subnet_id: "{{ aws_subnet.subnets | map(attribute='id') | list | last }}"
+      when: aws_subnet_id is not defined
 
     - name: start an instance with a public IP address
       amazon.aws.ec2_instance:
