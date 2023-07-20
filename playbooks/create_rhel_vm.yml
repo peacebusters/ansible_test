@@ -11,7 +11,7 @@
      vm_blueprint: 'rhel8'
      
    vars_files:
-     - "vm_blueprints/{{ vm_blueprint }}.yml"
+     - vm_blueprints/{{ vm_blueprint }}.yml
 
    tasks:
     - name: vars check
