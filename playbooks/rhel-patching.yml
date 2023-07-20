@@ -9,10 +9,10 @@
       ansible.builtin.dnf:
         name: '{{ package }}'
         state: latest
-      when: ansible_facts[distribution_major_version] >= 8
+      when: ansible_facts['distribution_major_version'] >= 8
     - name:
       ansible.builtin.yum:
         name: '{{ package }}'
         state: latest
-      when: ansible_facts[distribution_major_version] == '7'
+      when: ansible_facts['distribution_major_version'] == '7'
 
