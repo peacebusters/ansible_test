@@ -1,0 +1,12 @@
+---
+ - name: register-rhel
+   host: {{ vm_host }}
+   become: yes
+
+   tasks:
+    - name: register rehel
+      redhat_subscription:
+        state: present
+        username: tiida@redhat.com
+        password: 1993-KatsRedhat2020!
+        auto_attach: true
