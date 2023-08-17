@@ -5,14 +5,12 @@
    vars:
      vm_name: 'rhel-demo'
      aws_region: 'us-east-2'
-     aws_keypair_name: 'EDA-KEY'
-     aws_vpc_subnet_name: 'AAP-subnet-public1-us-east-2a'
-     aws_security_group_name: 'RedHat-SG'
+     aws_keypair_name: 'aap-key'
+     aws_vpc_subnet_name: 'AAP-subnet-private1-us-east-2a'
+     aws_security_group_name: 'aap-sg1'
      vm_blueprint: 'rhel8'
      aws_instance_ami: 'ami-0091af26fbb64f3e1'
-     
-   vars_files:
-     - 'vm_blueprints/{{ vm_blueprint }}.yml'
+     aws_instance_size: 't3.micro'
 
    tasks:
     - name: Get subnet info
