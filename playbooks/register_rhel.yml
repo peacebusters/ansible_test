@@ -1,6 +1,6 @@
 ---
  - name: register-rhel
-   host: {{ vm_host }}
+   hosts: {{ vm_host }}
    become: yes
 
    tasks:
