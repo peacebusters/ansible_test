@@ -13,10 +13,13 @@
       debug: 
         vars: 
           aws_instance_ami: '{{ aws_instance_ami_rhel9}}'
+        mesg: '{{ aws_instance_ami }}'
       when: vm_blueprint == 'rhel9'
+
         
     - name: rhel8
       debug: 
         vars: 
           aws_instance_ami: '{{ aws_instance_ami_rhel8}}'
+        mesg: '{{ aws_instance_ami }}'
       when: vm_blueprint == 'rhel8'
