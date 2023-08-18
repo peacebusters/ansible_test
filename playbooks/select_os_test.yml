@@ -1,5 +1,6 @@
 ---
  - name: select os test
+   hosts: localhost
    vars:
     vm_blueprint: 'rhel9'
     aws_instance_ami_rhel9: 'ami-02b8534ff4b424939'
@@ -8,13 +9,13 @@
     aws_instance_ami_amazon2023: 'ami-0ccabb5f82d4c9af5'
 
    tasks:
-      name: rhel9
+    - name: rhel9
       debug: 
         vars: 
           aws_instance_ami : {{ aws_instance_ami_rhel9}}
       when: vm_blueprint == 'rhel9'
         
-      name: rhel8
+    - name: rhel8
       debug: 
         vars: 
           aws_instance_ami : {{ aws_instance_ami_rhel8}}
