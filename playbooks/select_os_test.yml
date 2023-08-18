@@ -11,7 +11,7 @@
    tasks:
     - name: rhel9
       vars: 
-        aws_instance_ami: '{{ aws_instance_ami_rhel9}}'
+        aws_instance_ami: '{{ aws_instance_ami_rhel9 }}'
       when: vm_blueprint == 'rhel9'
       debug:
        msg: '{{ aws_instance_ami }}'
@@ -19,7 +19,22 @@
         
     - name: rhel8
       vars: 
-        aws_instance_ami: '{{ aws_instance_ami_rhel8}}'
+        aws_instance_ami: '{{ aws_instance_ami_rhel8 }}'
       when: vm_blueprint == 'rhel8'
       debug:
        msg: '{{ aws_instance_ami }}'
+
+    - name: win2019
+      vars: 
+        aws_instance_ami: '{{ aws_instance_ami_win2019 }}'
+      when: vm_blueprint == 'win2019'
+      debug:
+       msg: '{{ aws_instance_ami }}'
+
+    - name: amazon2020
+      vars: 
+        aws_instance_ami: '{{ aws_instance_ami_amazon2023 }}'
+      when: vm_blueprint == 'amazon2023'
+      debug:
+       msg: '{{ aws_instance_ami }}'
+
