@@ -31,7 +31,7 @@
       debug:
        msg: '{{ aws_instance_ami }}'
 
-    - name: amazon2020
+    - name: amazon2023
       vars: 
         aws_instance_ami: '{{ aws_instance_ami_amazon2023 }}'
       when: vm_blueprint == 'amazon2023'
