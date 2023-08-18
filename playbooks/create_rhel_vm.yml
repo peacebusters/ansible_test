@@ -15,9 +15,7 @@
      aws_instance_ami_amazon2023: 'ami-0ccabb5f82d4c9af5'
      aws_instance_ami: '{{ aws_instance_ami_rhel9 }}'
      aws_instance_size: 't3.micro'
-   debug:
-    msg: '{{ aws_instance_ami }}'
-
+  
 
    tasks:
     - name: rhel9
