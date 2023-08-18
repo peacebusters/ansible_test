@@ -7,6 +7,6 @@
     - name: register rehel
       redhat_subscription:
         state: present
-        username: tiida@redhat.com
-        password: 1993-KatsRedhat2020!
+        username: {{ username }}
+        password: {{ password }}
         auto_attach: true
