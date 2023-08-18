@@ -12,11 +12,11 @@
     - name: rhel9
       debug: 
         vars: 
-          aws_instance_ami : '{{ aws_instance_ami_rhel9}}'
+          aws_instance_ami: '{{ aws_instance_ami_rhel9}}'
       when: vm_blueprint == 'rhel9'
         
     - name: rhel8
       debug: 
         vars: 
-          aws_instance_ami : '{{ aws_instance_ami_rhel8}}'
+          aws_instance_ami: '{{ aws_instance_ami_rhel8}}'
       when: vm_blueprint == 'rhel8'
