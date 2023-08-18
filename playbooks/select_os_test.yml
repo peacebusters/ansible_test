@@ -11,8 +11,9 @@
 
 
    tasks:
-    - debug:
-      msg: '{{ aws_insance_ami }}'
+    - name: set os
+      debug:
+       msg: '{{ aws_insance_ami }}'
 
     - name: rhel9
       vars: 
