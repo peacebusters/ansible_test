@@ -14,7 +14,7 @@
    tasks:
     - name: set os
       debug:
-        msg: {{ set_aws_instance_ami }}
+        msg: '{{ set_aws_instance_ami }}'
 
     - name: rhel9
       vars: 
