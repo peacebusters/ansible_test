@@ -18,8 +18,8 @@
 
         
     - name: rhel8
-      debug: 
-        vars: 
-          aws_instance_ami: '{{ aws_instance_ami_rhel8}}'
-        when: vm_blueprint == 'rhel8'
-        msg: '{{ aws_instance_ami }}'
+      vars: 
+        aws_instance_ami: '{{ aws_instance_ami_rhel8}}'
+      when: vm_blueprint == 'rhel8'
+      debug:
+       msg: '{{ aws_instance_ami }}'
