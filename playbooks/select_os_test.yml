@@ -15,8 +15,8 @@
     - name: set os
       debug:
         msg: 
-         - {{ set_aws_instance_ami }}
-         - {{ aws_instance_ami }}
+         - "{{ set_aws_instance_ami }}"
+         - "{{ aws_instance_ami }}"
 
     - name: rhel9
       vars: 
