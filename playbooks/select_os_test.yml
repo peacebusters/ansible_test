@@ -8,7 +8,7 @@
     aws_instance_ami_win2019: 'ami-0a1a6272c3e138311'
     aws_instance_ami_amazon2023: 'ami-0ccabb5f82d4c9af5'
     set_aws_instance_ami: 'aws_instance_ami_{{ vm_blueprint }}'
-    aws_instance_ami: {{ set_aws_instance_ami }}
+    aws_instance_ami: '{{ set_aws_instance_ami }}'
 
 
    tasks:
