@@ -17,9 +17,8 @@
 #     aws_instance_ami: '{{ aws_instance_ami_rhel9 }}'
      aws_instance_size: 't3.tiny'
    vars_files:
-     - ../vm_blueprint/{{ vm_blueprint }}.yml  
-   debug:
-     msg: '{{ aws_instance_ami }}'
+     - ../vm_blueprint/'{{ vm_blueprint }}'.yml  
+
 
    tasks:
      - name: start an instance with a private IP address
