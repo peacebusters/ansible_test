@@ -8,6 +8,7 @@
      aws_keypair_name: 'aap-key'
      aws_vpc_subnet_name: 'AAP-subnet-private1-us-east-2a'
      aws_security_group_name: 'aap-sg1'
+     aws_subnet_id: 'subnet-0a89df97818cad487'
 #     vm_blueprint: 'rhel9'
 #     aws_instance_ami_rhel9: 'ami-02b8534ff4b424939'
 #     aws_instance_ami_rhel8: 'ami-068ee501b16366120'
