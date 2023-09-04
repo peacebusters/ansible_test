@@ -15,11 +15,17 @@
 #     aws_instance_ami_win2019: 'ami-0a1a6272c3e138311'
 #     aws_instance_ami_amazon2023: 'ami-0ccabb5f82d4c9af5'
 #     aws_instance_ami: '{{ aws_instance_ami_rhel9 }}'
-     aws_instance_size: 't3.micro'
+     aws_instance_size: 't3.tiny'
    vars_files:
      - ../vm_blueprint/{{ vm_blueprint }}.yml  
 #   debug:
 #     msg: '{{ aws_instance_ami }}'
+   debug:
+     msg: 
+       '{{ aws_image_owners }}'
+       '{{ aws_instance_size }}'
+       '{{ aws_image_architecture }}'
+       '{{ aws_instance_ami }}'
 
    tasks:
      - name: start an instance with a private IP address
