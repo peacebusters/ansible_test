@@ -15,7 +15,7 @@
 #     aws_instance_ami_amazon2023: 'ami-0ccabb5f82d4c9af5'
 #     aws_instance_ami: '{{ aws_instance_ami_rhel9 }}'
      aws_instance_size: 't3.micro'
-   vars_file:
+   vars_files:
      - ../vm_blueprint/{{ vm_blueprint }}.yml  
     debug:
      msg: '{{ aws_instance_ami }}'

@@ -2,4 +2,4 @@
 aws_image_owners: 309956199498
 aws_instance_size: t3.micro
 aws_image_architecture: x86_64
-aws_image_filter: 'RHEL-9*HVM-*Hourly*'
+aws_instance_ami: 'ami-02b8534ff4b424939'
