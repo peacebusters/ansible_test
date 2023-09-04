@@ -12,11 +12,6 @@
 
 
    tasks:
-    - name: set os
-      debug:
-        msg: 
-         - "{{ set_aws_instance_ami }}"
-         - "{{ aws_instance_ami }}"
 
     - name: rhel9
       vars: 
@@ -45,6 +40,13 @@
       when: vm_blueprint == 'amazon2023'
       debug:
        msg: '{{ aws_instance_ami }}'
+    
+    - name: selected
+      debug:
+       msg: '{{ aws_instance_ami }}'
+        
+
+
 
     - name: create VM
       debug:
