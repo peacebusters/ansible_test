@@ -18,14 +18,8 @@
      aws_instance_size: 't3.tiny'
    vars_files:
      - ../vm_blueprint/{{ vm_blueprint }}.yml  
-#   debug:
-#     msg: '{{ aws_instance_ami }}'
    debug:
-     msg: 
-       - '{{ aws_image_owners }}'
-       - '{{ aws_instance_size }}'
-       - '{{ aws_image_architecture }}'
-       - '{{ aws_instance_ami }}'
+     msg: '{{ aws_instance_ami }}'
 
    tasks:
      - name: start an instance with a private IP address
