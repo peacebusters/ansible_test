@@ -17,7 +17,7 @@
      aws_instance_size: 't3.micro'
    vars_files:
      - ../vm_blueprint/{{ vm_blueprint }}.yml  
-    debug:
+   debug:
      msg: '{{ aws_instance_ami }}'
 
 
