@@ -8,56 +8,19 @@
      aws_keypair_name: 'aap-key'
      aws_vpc_subnet_name: 'AAP-subnet-private1-us-east-2a'
      aws_security_group_name: 'aap-sg1'
-     vm_blueprint: 'rhel9'
-     aws_instance_ami_rhel9: 'ami-02b8534ff4b424939'
-     aws_instance_ami_rhel8: 'ami-068ee501b16366120'
-     aws_instance_ami_win2019: 'ami-0a1a6272c3e138311'
-     aws_instance_ami_amazon2023: 'ami-0ccabb5f82d4c9af5'
-     aws_instance_ami: '{{ aws_instance_ami_rhel9 }}'
+#     vm_blueprint: 'rhel9'
+#     aws_instance_ami_rhel9: 'ami-02b8534ff4b424939'
+#     aws_instance_ami_rhel8: 'ami-068ee501b16366120'
+#     aws_instance_ami_win2019: 'ami-0a1a6272c3e138311'
+#     aws_instance_ami_amazon2023: 'ami-0ccabb5f82d4c9af5'
+#     aws_instance_ami: '{{ aws_instance_ami_rhel9 }}'
      aws_instance_size: 't3.micro'
-  
+   vars_file:
+     - ../vm_blueprint/{{ vm_blueprint }}.yml  
+    debug:
+     msg: '{{ aws_instance_ami }}'
 
-   tasks:
-    - name: rhel9
-      vars: 
-        aws_instance_ami: '{{ aws_instance_ami_rhel9 }}'
-      when: vm_blueprint == 'rhel9'
-      debug:
-       msg: '{{ aws_instance_ami }}'
 
-    - name: rhel8
-      vars: 
-        aws_instance_ami: '{{ aws_instance_ami_rhel8 }}'
-      when: vm_blueprint == 'rhel8'
-      debug:
-       msg: '{{ aws_instance_ami }}'
-
-    - name: win2019
-      vars: 
-        aws_instance_ami: '{{ aws_instance_ami_win2019 }}'
-      when: vm_blueprint == 'win2019'
-      debug:
-       msg: '{{ aws_instance_ami }}'
-
-    - name: amazon2023
-      vars: 
-        aws_instance_ami: '{{ aws_instance_ami_amazon2023 }}'
-      when: vm_blueprint == 'amazon2023'
-      debug:
-       msg: '{{ aws_instance_ami }}'
-
-    - name: Get subnet info
-      amazon.aws.ec2_vpc_subnet_info:
-        region: "{{ aws_region }}"
-        filters:
-          "tag:Name": "{{ aws_vpc_subnet_name }}"
-      register: aws_subnet
-      when: aws_subnet_id is not defined
-
-    - name: Save subnet id
-      ansible.builtin.set_fact:
-        aws_subnet_id: "{{ aws_subnet.subnets | map(attribute='id') | list | last }}"
-      when: aws_subnet_id is not defined
 
     - name: start an instance with a private IP address
       amazon.aws.ec2_instance:

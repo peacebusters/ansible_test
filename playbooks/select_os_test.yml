@@ -46,8 +46,6 @@
        msg: '{{ aws_instance_ami }}'
         
 
-
-
     - name: create VM
       debug:
        msg: '{{ aws_instance_ami }}'
