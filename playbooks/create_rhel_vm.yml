@@ -20,8 +20,7 @@
    debug:
      msg: '{{ aws_instance_ami }}'
 
-
-
+   tasks:
     - name: start an instance with a private IP address
       amazon.aws.ec2_instance:
         name: '{{ vm_name }}'
