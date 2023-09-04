@@ -22,10 +22,10 @@
 #     msg: '{{ aws_instance_ami }}'
    debug:
      msg: 
-       '{{ aws_image_owners }}'
-       '{{ aws_instance_size }}'
-       '{{ aws_image_architecture }}'
-       '{{ aws_instance_ami }}'
+       - '{{ aws_image_owners }}'
+       - '{{ aws_instance_size }}'
+       - '{{ aws_image_architecture }}'
+       - '{{ aws_instance_ami }}'
 
    tasks:
      - name: start an instance with a private IP address
