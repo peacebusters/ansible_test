@@ -9,5 +9,5 @@
        cmd: cat /etc/passwd
        register: output
    - name: show result
-    　ansible.builtin.debug:
-      　msg: "{{ output.stdout_lines }}"
+　　　　　　　　　　ansible.builtin.debug:
+     　　　　msg: "{{ output.stdout_lines }}"
