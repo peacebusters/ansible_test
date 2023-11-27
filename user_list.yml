@@ -1,14 +1,14 @@
 ---
- - name: OS patch update
-   hosts: all
-   become: yes
+- name: get user list
+  hosts: all
+  become: yes
 
-   tasks:
-   - name: show etc/passwd
-     ansible.builtin.shell:
-       cmd: cat /etc/passwd
-       register: output
+  tasks:
+  - name: show etc/passwd
+    ansible.builtin.shell:
+    　　cmd: cat /etc/passwd
+     register: output
 
-   - name: show result
-   　　　　ansible.builtin.debug:
-       msg: "{{ output.stdout_lines }}"
+　　- name: show result
+  　　ansible.builtin.debug:
+    　　msg: "{{ output.stdout_lines }}"
